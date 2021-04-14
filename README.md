@@ -2,6 +2,7 @@ Quarkus Kafka Quickstart
 ========================
 
 This project illustrates how you can interact with Apache Kafka using MicroProfile Reactive Messaging.
+It includes SSL integration and also value serialization and deserialization
 
 ## Kafka cluster
 
@@ -15,16 +16,16 @@ The application can be started using:
 mvn quarkus:dev
 ```
 
-Then, open your browser to `http://localhost:8080/prices.html`, and you should see a fluctuating price.
+Then, open your browser to `http://localhost:8089/prices.html`, and you should show the raw XML.
 
 ## Anatomy
 
 In addition to the `prices.html` page, the application is composed by 3 components:
 
-* `PriceGenerator` - a bean generating random price. They are sent to a Kafka topic
-* `PriceConverter` - on the consuming side, the `PriceConverter` receives the Kafka message and convert the price.
+* `MessageProducer` - a bean generating Inflight kafka payload. They are sent to a Kafka topic
+* `MessageConsumer` - on the consuming side, the `MessageConsumer` receives the Kafka message and adds an additional property to the payload.
 The result is sent to an in-memory stream of data
-* `PriceResource`  - the `PriceResource` retrieves the in-memory stream of data in which the converted prices are sent and send these prices to the browser using Server-Sent Events.
+* `MessageStreamResource`  - the `MessageStreamResource` retrieves the in-memory stream of data and send these payloads to the browser using Server-Sent Events.
 
 The interaction with Kafka is managed by MicroProfile Reactive Messaging.
 The configuration is located in the application configuration.
