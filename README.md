@@ -4,7 +4,10 @@ Quarkus Kafka Quickstart
 This project illustrates how you can interact with Apache Kafka using MicroProfile Reactive Messaging. I have used the Quarkus base example project and modified it. So the html page name is still prices. 
 
 
-1. It includes SSL integration and also value serialization and deserialization
+1. It includes SSL integration
+2. Value serialization and deserialization
+3. Manual Message Acknowledgement
+4. Failure Strategy
 
 ## Kafka cluster
 
